@@ -13,12 +13,6 @@
     export default {
         store,
         vuex: {
-            getters: {
-                todos({todos})
-                {
-                    return todos
-                }
-            },
             actions: {
                 upTodo
             }
@@ -43,6 +37,13 @@
 <style>
     body {
         font-family: Helvetica, sans-serif;
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
     .app {
