@@ -8,31 +8,14 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-    count: 0
+    todos: []
 }
 
 const mutations = {
-    INCREMENT (state, amount) {
-        state.count += amount
+    UPTODO(state, todo) {
+        state.todos.push(todo)
     }
 }
-
-/* const logger = createLogger({
-    collapsed: false,
-    transformer (state) {
-        return state.count
-    },
-    mutationTransformer (mutation) {
-        return mutation.type
-    }
-})*/
-
-/* const plugin = store => {
-    store.subscribe((mutation, state) => {
-        console.log(mutation.type)
-        console.log(state.count)
-    })
-}*/
 
 export default new Vuex.Store({
     state,
