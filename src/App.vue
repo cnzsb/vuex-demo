@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <h1>todos</h1>
-        <input class="input" type="text" v-model="todo" @keyup.enter="addTodo(todo)" placeholder="add todos">
+        <input class="input" type="text" v-model="todo" @keyup.enter="upTodo" placeholder="add todos">
         <list></list>
     </div>
 </template>
@@ -20,6 +20,15 @@
         data() {
             return {
                 todo: ''
+            }
+        },
+        methods: {
+            upTodo() {
+                const todo = this.todo.trim()
+                if (todo) {
+                    this.addTodo(todo)
+                }
+                this.todo = ''
             }
         },
         components: {
