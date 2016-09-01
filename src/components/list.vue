@@ -1,17 +1,20 @@
 <template>
     <div class="list-wrap" v-show="todos.length">
         <p class="status">
-            <input type="radio" name="status" value="all">全部
-            <input type="radio" name="status" value="active">进行中
-            <input type="radio" name="status" value="done">已完成
+            <label><input type="radio" name="status" value="all" v-model="status">全部({{todos.length}})</label>
+            <label><input type="radio" name="status" value="active" v-model="status">进行中({{active}})</label>
+            <label><input type="radio" name="status" value="done" v-model="status">已完成({{done}})</label>
         </p>
         <ul class="list">
             <li class="title">
                 <span class="time">Time</span>
                 <span class="todo">TODO</span>
             </li>
-            <li class="item" v-for="todo in todos">
-                <p class="content" :class="{del: todo.done}"><span class="time">{{todo.time}}</span><span class="todo">{{todo.text}}</span>
+            <li class="item" :class="{hidden: (status === 'active' && todo.done) || (status === 'done' && !todo.done)}"
+                v-for="todo in todos">
+                <p class="content" :class="{del: todo.done}">
+                    <span class="time">{{todo.time}}</span>
+                    <span class="todo">{{todo.text}}</span>
                 </p>
                 <button class="done" @click="toggleTodo(todo)">√</button>
                 <button class="del" @click="delTodo(todo)">X</button>
@@ -35,11 +38,27 @@
             }
         },
         data() {
-            return {}
+            return {
+                status: 'all'
+            }
+        },
+        computed: {
+            active() {
+                return this.todos.filter(todo => {
+                    return !todo.done
+                }).length
+            },
+            done() {
+                return this.todos.length - this.active
+            }
         }
     }
 </script>
 <style scoped>
+    .list .item.hidden {
+        display: none;
+    }
+
     .list .item .content {
         display: inline-flex;
         position: relative;
