@@ -5,7 +5,8 @@
             <span class="todo">TODO</span>
         </li>
         <li class="item" v-for="todo in todos">
-            <span class="time">{{todo.time}}</span><span class="todo">{{todo.todo}}</span>
+            <span class="time">{{todo.time}}</span><span class="todo">{{todo.text}}</span>
+            <button class="done">√</button><button class="del">X</button>
         </li>
     </ul>
 </template>

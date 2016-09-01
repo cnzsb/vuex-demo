@@ -1,20 +1,20 @@
 <template>
     <div class="app">
         <h2>todos</h2>
-        <input type="text" v-model="todo" @keyup.enter="upTodo(todo)">
+        <input type="text" v-model="todo" @keyup.enter="addTodo(todo)">
         <list></list>
     </div>
 </template>
 
 <script>
     import store from './vuex/store'
-    import {upTodo} from './vuex/actions'
+    import {addTodo} from './vuex/actions'
 
     export default {
         store,
         vuex: {
             actions: {
-                upTodo
+                addTodo
             }
         },
         data() {
@@ -22,12 +22,6 @@
                 todo: ''
             }
         },
-        watch: {
-            todo() {
-                console.log(this.upTodo)
-            }
-        },
-        methods: {},
         components: {
             list: require('./components/list')
         }
