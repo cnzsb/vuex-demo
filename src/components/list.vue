@@ -1,14 +1,23 @@
 <template>
-    <ul class="list" v-show="todos.length">
-        <li class="title">
-            <span class="time">Time</span>
-            <span class="todo">TODO</span>
-        </li>
-        <li class="item" v-for="todo in todos">
-            <p class="content" :class="{del: todo.done}"><span class="time">{{todo.time}}</span><span class="todo">{{todo.text}}</span></p>
-            <button class="done" @click="toggleTodo(todo)">√</button><button class="del" @click="delTodo(todo)">X</button>
-        </li>
-    </ul>
+    <div class="list-wrap" v-show="todos.length">
+        <p class="status">
+            <input type="radio" name="status" value="all">全部
+            <input type="radio" name="status" value="active">进行中
+            <input type="radio" name="status" value="done">已完成
+        </p>
+        <ul class="list">
+            <li class="title">
+                <span class="time">Time</span>
+                <span class="todo">TODO</span>
+            </li>
+            <li class="item" v-for="todo in todos">
+                <p class="content" :class="{del: todo.done}"><span class="time">{{todo.time}}</span><span class="todo">{{todo.text}}</span>
+                </p>
+                <button class="done" @click="toggleTodo(todo)">√</button>
+                <button class="del" @click="delTodo(todo)">X</button>
+            </li>
+        </ul>
+    </div>
 </template>
 <script>
     import {delTodo, toggleTodo} from '../vuex/actions'

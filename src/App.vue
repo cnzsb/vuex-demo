@@ -1,7 +1,7 @@
 <template>
     <div class="app">
-        <h2>todos</h2>
-        <input type="text" v-model="todo" @keyup.enter="addTodo(todo)">
+        <h1>todos</h1>
+        <input class="input" type="text" v-model="todo" @keyup.enter="addTodo(todo)" placeholder="add todos">
         <list></list>
     </div>
 </template>
@@ -45,5 +45,10 @@
         margin: 0 auto;
     }
 
-
+    .app .input {
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        font-size: 30px;
+    }
 </style>
