@@ -24,7 +24,13 @@ const mutations = {
             text: todo,
             done: false
         })
-    }
+    },
+    DEL_TODO(state, todo) {
+        state.todos.splice(state.todos.indexOf(todo), 1)
+    },
+    TOGGLE_TODO(state, todo) {
+        todo.done = !todo.done
+    },
 }
 
 const localStoragePlugin = store => {

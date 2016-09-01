@@ -4,3 +4,11 @@
 export const addTodo = ({dispatch}, todo) => {
     dispatch('ADD_TODO', todo)
 }
+
+export const delTodo = ({dispatch}, todo) => {
+    dispatch('DEL_TODO', todo)
+}
+
+export const toggleTodo = ({dispatch}, todo) => {
+    dispatch('TOGGLE_TODO', todo)
+}
