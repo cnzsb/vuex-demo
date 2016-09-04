@@ -31,6 +31,14 @@ const mutations = {
     TOGGLE_TODO(state, todo) {
         todo.done = !todo.done
     },
+    TOGGLE_ALL(state, done) {
+        state.todos.forEach(todo => {
+            todo.done = done
+        })
+    },
+    CLEAR_COMPLETED(state) {
+        state.todos = state.todos.filter(todo => !todo.done)
+    }
 }
 
 const localStoragePlugin = store => {

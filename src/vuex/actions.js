@@ -12,3 +12,11 @@ export const delTodo = ({dispatch}, todo) => {
 export const toggleTodo = ({dispatch}, todo) => {
     dispatch('TOGGLE_TODO', todo)
 }
+
+export const toggleAll = ({dispatch}, done) => {
+    dispatch('TOGGLE_ALL', done)
+}
+
+export const clearCompleted = ({dispatch}) => {
+    dispatch('CLEAR_COMPLETED')
+}

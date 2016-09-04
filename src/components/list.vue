@@ -4,6 +4,9 @@
             <label><input type="radio" name="status" value="all" v-model="status">全部({{todos.length}})</label>
             <label><input type="radio" name="status" value="active" v-model="status">进行中({{active}})</label>
             <label><input type="radio" name="status" value="done" v-model="status">已完成({{done}})</label>
+            <button type="button" v-text="status === 'done' ? '全部标记为未完成' : '全部标记为已完成'"
+                    @click="status === 'done' ? toggleAll(false) : toggleAll(true)"></button>
+            <button type="button" @click="clearCompleted">删除已完成</button>
         </p>
         <ul class="list">
             <li class="title">
@@ -23,7 +26,7 @@
     </div>
 </template>
 <script>
-    import {delTodo, toggleTodo} from '../vuex/actions'
+    import {delTodo, toggleTodo, toggleAll, clearCompleted} from '../vuex/actions'
 
     export default {
         vuex: {
@@ -34,7 +37,9 @@
             },
             actions: {
                 delTodo,
-                toggleTodo
+                toggleTodo,
+                toggleAll,
+                clearCompleted
             }
         },
         data() {
