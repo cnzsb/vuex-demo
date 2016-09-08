@@ -15,12 +15,8 @@ const state = {
 const mutations = {
     ADD_TODO(state, todo) {
         const fullTime = new Date()
-        const time = (fullTime.getMonth() + 1)
-            + '-' + fullTime.getDate()
-            + ' ' + fullTime.getHours()
-            + ':' + (fullTime.getMinutes() < 10 ? '0' + fullTime.getMinutes() : fullTime.getMinutes())
         state.todos.push({
-            time,
+            time: `${new Date().toLocaleDateString()} ${new Date().toTimeString().split(' ')[0]}`,
             text: todo,
             done: false
         })

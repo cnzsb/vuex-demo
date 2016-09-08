@@ -87,12 +87,13 @@
 
     .list .time {
         display: inline-block;
-        width: 90px;
+        width: 130px;
     }
 
     .list .todo {
         display: inline-block;
-        width: 300px;
+        width: 280px;
+        margin-left: 20px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
